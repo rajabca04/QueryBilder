@@ -33,6 +33,18 @@ class StudentController extends Controller
             return redirect()->back();
     }
     public function update($id){
+        $data = DB::table('student')->find($id);
+        return view("update",["item"=>$data]);
+    }
 
+    public function modify(Request $req,$id){
+        DB::table('student')->where("id",$id)->update([
+            "name" => $req->name,
+            'contact' => $req->contact,
+            "email" => $req->email,
+            "address" => $req->address
+        ]);
+
+        return redirect()->route("homepage");
     }
 }

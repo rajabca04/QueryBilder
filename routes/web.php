@@ -16,4 +16,6 @@ use App\Http\Controllers\StudentController;
 Route::get('/',[StudentController::class,"index"])->name("homepage");
 Route::post('/insert',[StudentController::class,"insert"])->name("insert");
 Route::get('/delete/{id}',[StudentController::class,"delete"])->name("delete");
+Route::get('/update/{id}',[StudentController::class,"update"])->name("update");
+Route::post('/update/{id}',[StudentController::class,"modify"])->name("modify");
 

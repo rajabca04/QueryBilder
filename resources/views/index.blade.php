@@ -49,7 +49,10 @@
                             <td>{{$item->contact}}</td>
                             <td>{{$item->address}}</td>
                             <td>{{$item->email}}</td>
-                            <td><a href="{{route('delete',['id'=>$item->id])}}" class="btn btn-danger">delete</a></td>
+                            <td><a href="{{route('delete',['id'=>$item->id])}}" class="btn btn-danger">delete</a>
+                                <a href="{{route('update',['id'=>$item->id])}}" class="btn btn-info">edit</a>
+                            </td>
+
                         </tr>
                     @endforeach
                 </table>
