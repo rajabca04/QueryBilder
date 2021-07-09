@@ -10,12 +10,16 @@ use SebastianBergmann\Environment\Console;
 
 class StudentController extends Controller
 {
-    //
+    //Geting data form Student table..
 
     public function index(){
         $data =  DB::table('student')->get();
         return view("index",["data"=>$data]);
     }
+
+
+    // Inserting data into Student table..
+
     public function insert(Request $req){
          DB::table('student')->insert([
             "name" => $req->name,
@@ -28,15 +32,21 @@ class StudentController extends Controller
 
     }
 
+    // Deleteing all data of selected id..
+
     public function delete($id){
             DB::table('student')->where("id",$id)->delete();
-            return redirect()->back();
+            return redirect()->back();  // return on privious page..
     }
+
+    // Finding the data of selected id.. and Show on update page
+
     public function update($id){
         $data = DB::table('student')->find($id);
         return view("update",["item"=>$data]);
     }
 
+    // Modefying data of selected id.. and update into student table..
     public function modify(Request $req,$id){
         DB::table('student')->where("id",$id)->update([
             "name" => $req->name,
@@ -45,6 +55,6 @@ class StudentController extends Controller
             "address" => $req->address
         ]);
 
-        return redirect()->route("homepage");
+        return redirect()->route("homepage");   // Return on homepgae(index)
     }
 }
